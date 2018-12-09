@@ -216,40 +216,47 @@ function getBoxId() {
 
 function getBox() {
   var highest = "";
+  var highestMatch = "";
   var highestCount = 0;
   var boxStr2 = document.getElementById("boxcode").value;
-  var boxArr2 = boxStr2.split(" ");
-  console.log(boxArr2);
+  var boxArr2 = boxStr2.split(" "); //console.log(boxArr2);
+
   var i;
+  var x;
+  var m;
 
   for (i = 0; i < boxArr2.length; i++) {
-    var x;
-    var wordSplitArr = [];
+    var wordSplitArr = []; //console.log(i);
 
-    for (x = 0; x < boxArr2[i].length; x++) {
-      var countMatches = 0;
-      var matchLetter = boxArr2[i].charAt(x);
-      var z;
+    for (m = 0; m < boxArr2.length; m++) {
+      if (i != m) {
+        var countMatches = 0;
 
-      for (z = 0; z < boxArr2.length; z++) {
-        if (matchLetter == boxArr2[z].charAt(x)) {
-          countMatches = countMatches + 1;
+        for (x = 0; x < boxArr2[i].length; x++) {
+          var matchLetter = boxArr2[i].charAt(x);
+          var matchWithLetter = boxArr2[m].charAt(x);
 
-          if (countMatches > highestCount) {
-            highestCount = countMatches;
-            highest = boxArr2[i];
+          if (matchLetter == matchWithLetter) {
+            countMatches = countMatches + 1;
+
+            if (countMatches > highestCount) {
+              highestCount = countMatches;
+              highest = boxArr2[i];
+              highestMatch = boxArr2[m];
+            }
           }
         }
       }
     }
-
-    console.log(highest);
-    console.log(highestCount);
   }
+
+  console.log(highest);
+  console.log(highestMatch);
+  console.log(highestCount);
 }
 
 document.onload = init();
-},{}],"C:/Users/mikae/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../../Users/cecil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -276,7 +283,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53887" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51105" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -418,5 +425,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["C:/Users/mikae/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../Users/cecil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/adventCode.e31bb0bc.map
