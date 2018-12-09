@@ -6,6 +6,7 @@ var allStartNum = [0];
 
 //LUCKA 2
 document.getElementById("submitBox").addEventListener("click", getBoxId);
+document.getElementById("findBox").addEventListener("click", getBox);
 var twoLetter = 0;
 var threeLetter = 0;
 
@@ -113,6 +114,40 @@ function getBoxId()
 
     }
     console.log("SUM: " + threeLetter + " " +  twoLetter)
+  }
+  function getBox()
+  {
+    var highest = "";
+    var highestCount = 0;
+    var boxStr2 = document.getElementById("boxcode").value;
+    var boxArr2 = boxStr2.split(" ");
+    console.log(boxArr2);
+    var i;
+    for (i = 0; i < boxArr2.length; i++) {
+      var x;
+      var wordSplitArr = [];
+
+      for (x = 0; x < boxArr2[i].length; x++)
+      {
+          var countMatches = 0;
+          var matchLetter = boxArr2[i].charAt(x);
+          var z;
+          for (z = 0; z < boxArr2.length; z++)
+          {
+            if (matchLetter == boxArr2[z].charAt(x))
+            {
+              countMatches = countMatches + 1;
+              if (countMatches > highestCount)
+              {
+                highestCount = countMatches;
+                highest = boxArr2[i];
+              }
+            }
+          }
+      }
+      console.log(highest);
+      console.log(highestCount);
+    }
   }
 
 document.onload = init();
