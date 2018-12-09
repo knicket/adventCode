@@ -112,6 +112,7 @@ var allStartNum = [0]; //LUCKA 2
 
 document.getElementById("submitBox").addEventListener("click", getBoxId);
 document.getElementById("findBox").addEventListener("click", getBox);
+document.getElementById("day3").addEventListener("click", day3);
 var twoLetter = 0;
 var threeLetter = 0;
 
@@ -255,6 +256,19 @@ function getBox() {
   console.log(highestCount);
 }
 
+function day3() {
+  var cordinates;
+  var boxStr3 = document.getElementById("input3").value;
+  var boxArr3 = boxStr3.split(" #");
+  var a;
+
+  for (a = 0; a < boxArr3.length; a++) {
+    cordinates.push(boxArr3[a]);
+  }
+
+  console.log(boxArr3);
+}
+
 document.onload = init();
 },{}],"../../Users/cecil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -283,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51105" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52840" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

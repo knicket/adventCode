@@ -7,6 +7,7 @@ var allStartNum = [0];
 //LUCKA 2
 document.getElementById("submitBox").addEventListener("click", getBoxId);
 document.getElementById("findBox").addEventListener("click", getBox);
+document.getElementById("day3").addEventListener("click", day3);
 var twoLetter = 0;
 var threeLetter = 0;
 
@@ -162,6 +163,19 @@ function getBoxId()
     console.log(highest);
     console.log(highestMatch);
     console.log(highestCount);
+  }
+
+  function day3()
+  {
+    var cordinates;
+    var boxStr3 = document.getElementById("input3").value;
+    var boxArr3 = boxStr3.split(" #");
+    var a;
+    for (a = 0; a < boxArr3.length; a++)
+    {
+      cordinates.push(boxArr3[a]);
+    }
+    console.log(boxArr3);
   }
 
 document.onload = init();
