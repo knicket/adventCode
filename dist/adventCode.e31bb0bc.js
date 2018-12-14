@@ -257,16 +257,69 @@ function getBox() {
 }
 
 function day3() {
-  var cordinates;
+  var hits = 0;
+  var cord;
+  var cordArr;
+  var cordinates = [];
   var boxStr3 = document.getElementById("input3").value;
-  var boxArr3 = boxStr3.split(" #");
+  boxStr3 = boxStr3.replace(/ /g, "");
+  boxStr3 = boxStr3.replace(/,/g, ":");
+  boxStr3 = boxStr3.replace(/x/g, ":");
+  boxStr3 = boxStr3.replace(/@/g, ":");
+  var boxArr3 = boxStr3.split("#");
   var a;
+  var b;
+  var c;
+  var duplicateArr = [];
+  var sumOfCord = [];
 
   for (a = 0; a < boxArr3.length; a++) {
-    cordinates.push(boxArr3[a]);
+    console.log(a);
+    var converter = [];
+    converter = boxArr3[a].split(":"); //var left = (Number(converter[2])*Number(converter[3]);
+
+    var oneSantaSuit = "";
+
+    for (c = 0; c < Number(converter[4]); c++) {
+      for (b = 0; b < Number(converter[3]); b++) {
+        var newCordinate = "";
+        newCordinate = String(Number(converter[1]) + b) + "," + String(Number(converter[2]) + c);
+        oneSantaSuit = oneSantaSuit + newCordinate;
+
+        if (cordinates.indexOf(newCordinate) > -1) {
+          if (duplicateArr.indexOf(newCordinate) > -1) {} else {
+            duplicateArr.push(newCordinate);
+          }
+        } else {
+          cordinates.push(newCordinate);
+        }
+      }
+    }
+
+    sumOfCord.push(oneSantaSuit);
   }
 
-  console.log(boxArr3);
+  var d;
+
+  for (d = 0; d < sumOfCord.length; d++) {
+    var cordHits = 0;
+
+    for (f = 1; f < sumOfCord.length - 1; f++) {
+      if (sumOfCord[d] == sumOfCord[f]) {
+        cordHits++;
+      }
+    }
+
+    if (cordHits == 0) {
+      console.log("IM ALONE:" + d);
+    }
+  } //NEED TO EXCLUDE SAME HIT PROB WITH ARRAY
+  //console.log(cordinates);
+  //  console.log(converter);
+  //console.log(cordinates);
+
+
+  console.log(duplicateArr.length);
 }
 
 document.onload = init();
@@ -297,7 +350,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52840" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62424" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
